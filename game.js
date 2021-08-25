@@ -15,45 +15,32 @@ $(document).on("keypress", function () {
   }
 });
 
+function selectedColor(color) {
+  userClickedPattern.push(color);
+  playSound(color);
+  animatePress(color);
+  checkAnswer(color.length - 1);
+}
+
 document.addEventListener("keypress", function (event) {
-  var color;
+
   if (event.key === "q") {
-    color = "green";
-    userClickedPattern.push(color);
-    playSound(color);
-    animatePress(color);
-    checkAnswer(color.length - 1);
+    selectedColor("green");
   }
   if (event.key === "w") {
-    color = "red";
-    userClickedPattern.push(color);
-    playSound(color);
-    animatePress(color);
-    checkAnswer(color.length - 1);
+    selectedColor("red");
   }
   if (event.key === "a") {
-    color = "yellow";
-    userClickedPattern.push(color);
-    playSound(color);
-    animatePress(color);
-    checkAnswer(color.length - 1);
+    selectedColor("yellow");
   }
   if (event.key === "s") {
-    color = "blue";
-    userClickedPattern.push(color);
-    playSound(color);
-    animatePress(color);
-    checkAnswer(color.length - 1);
+    selectedColor("blue");
   }
 });
 
 $(".btn").on("click", function () {
   var userChosenColour = $(this).attr("id");
-  console.log(userChosenColour);
-  userClickedPattern.push(userChosenColour);
-  playSound(userChosenColour);
-  animatePress(userChosenColour);
-  checkAnswer(userClickedPattern.length - 1);
+  selectedColor(userChosenColour);
 });
 
 
